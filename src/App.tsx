@@ -1,13 +1,38 @@
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Demo from "./Components/DemoFetch";
+import { red } from "@mui/material/colors";
 
-const queryClient = new QueryClient();
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: red[500],
+    },
+  },
+});
+
+const queryClient = new QueryClient({
+  // update the default settings if needed
+  // defaultOptions: {
+  //   queries: {
+  //     refetchIntervalInBackground: false,
+  //     retry: 1,
+  //     refetchOnMount: false,
+  //     refetchOnReconnect: false,
+  //     refetchOnWindowFocus: false,
+  //     retryOnMount: false,
+  //   },
+  // },
+});
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Demo />
+      <ThemeProvider theme={theme}>
+        <Demo />
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
