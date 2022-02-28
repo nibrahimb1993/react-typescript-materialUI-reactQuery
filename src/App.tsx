@@ -1,4 +1,3 @@
-import "./App.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Demo from "./Components/DemoFetch";
 import { red } from "@mui/material/colors";
